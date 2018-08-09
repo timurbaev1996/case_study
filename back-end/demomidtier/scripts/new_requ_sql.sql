@@ -3,9 +3,17 @@ SELECT * FROM deal;
 SELECT * FROM counterparty;
 SELECT * FROM instrument;
 
-/* USER REQUIRMENT 4 
-??????????? JOIN 
-*/
+/* USER REQUIRMENT 4 */
+
+/* Correlation btw. deal_type and counterparty --> SHows the most frequently traded Counterparty */
+SELECT deal.deal_type, deal.deal_quantity, deal.deal_amount, counterparty.counterparty_name
+	FROM deal, counterparty
+    WHERE deal.deal_counterparty_id = counterparty.counterparty_id;
+    
+/* Correlation btw. deal_amount, deal_quantity and instrument --> Shows which instruments traded the most with the highest amount */
+SELECT deal.deal_type, deal.deal_quantity, deal.deal_amount, instrument.instrument_name
+	FROM deal, instrumnet
+    WHERE deal.deal_instrument_id = instrument.instrument_id;
 
 
 /* NEW REQUIREMENTS */
