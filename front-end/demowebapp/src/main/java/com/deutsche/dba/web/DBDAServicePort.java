@@ -6,8 +6,7 @@
 package com.deutsche.dba.web;
 
 
-
-import com.db.demomidtier.SQLManager;
+import com.deutsche.dba.utils.SimpleJsonMessage;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -20,17 +19,12 @@ import javax.ws.rs.core.Response;
 
 /**
  *
- * @author Mike
+ * @author Selvyn
  */
 @Path("/services")
 public class DBDAServicePort implements IDBDAServicePort
 {
-
-    SQLManager sql = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp"); // Must be read from config
-        
-    String result = sql.testConnection();
-        
-    
+   
 
     @Override
     @GET
@@ -42,6 +36,47 @@ public class DBDAServicePort implements IDBDAServicePort
 
         return Response.status(200).entity(result).build();
     }
+    
+    @Override
+    @GET
+    @Path("/getAllTags")
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    public Response getAllTags()
+    {
+        String result = "getAllTags() need to be built";
+    	return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build();
+    }
+    
+    @Override
+    @GET
+    @Path("/getAllURL")
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    public Response getAllURL()
+    {
+        String result = "getAllURL() need to be built";
+    	return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build();
+    }
+
+    @Override
+    @GET
+    @Path("/get/{tags}")
+    public Response getSavedURLWithInfo(@PathParam("tags")String tags)
+    {
+        String result = "getSavedURLWithInfo() need to be built";
+    	return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build();
+    }
+
+    @Override
+    @GET
+    @Path("/login/{usr}/{pwd}")
+    public Response loginWithInfo( @PathParam("url")String usr,
+                                        @PathParam("description")String description,
+                                        @PathParam("tags")String tags )
+    {
+        String result = "loginWithInfo() need to be built";
+    	return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build();
+    }
+
     
 
 }

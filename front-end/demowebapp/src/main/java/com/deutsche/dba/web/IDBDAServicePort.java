@@ -28,5 +28,27 @@ public interface IDBDAServicePort
     @Produces(MediaType.TEXT_HTML)
     public Response sayHtmlHelloTest();
     
-  
+    @GET
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    public Response getAllTags();
+    
+    @GET
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    public Response getAllURL();
+    
+    @GET
+    @Path("/get/{tags}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getSavedURLWithInfo(@PathParam("tags") String tags);
+
+    @POST
+    @Path("/login/{usr}/{pwd}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response loginWithInfo( @PathParam("url")String url,
+                                        @PathParam("description")String description,
+                                        @PathParam("tags")String tags );
+
+    
 }
