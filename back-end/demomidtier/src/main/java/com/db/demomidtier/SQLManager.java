@@ -1,73 +1,65 @@
 package com.db.demomidtier;
 
 import java.sql.*;
+import java.util.Map;
 
 public class SQLManager {
-    private Connection connection;
-    public SQLManager (String dbName, String username, String password){
+    private DB db;
+    public SQLManager (String dbName, String username, String password) {
         try {
-            Class.forName ("com.mysql.jdbc.Driver");  
-            connection = DriverManager.getConnection (dbName,username,password);
+            db = new DB(dbName, username, password);
         } catch (Exception e) {
-            connection = null;
+            throw new IllegalStateException("Cannot connect the database!", e); /// wrong
         }
     }
-    protected void finalize() {
-        System.out.println("Called finalize method");
-    }
-    
-    
-    static final class Deal {
-        @JsonProperty("deal_id");
-        private String dealId;
-/*        @JsonProperty("picOfPersonWhoPosted")
-        private String pictureOfPoster;
-        @JsonProperty("nameOfPersonWhoPosted")
-        private String nameOfPoster;
-        private String likesCount;
-        private List<String> comments;
-        private String timeOfPost;*/
-    }
-    
-    
-    // deal_id
-    
-    private static final ObjectMapper JACKSON = new ObjectMapper();
-    public String testConnection () {
-        
-        
-        
-        if (connection == null) {
-            return "Failed to make connection!";
-        } else {
-            return "Successful";
-        }
-    }
-    public boolean AuthorizeUser (String login, String password) {
+    public Map[] LoadUsers (String UserId) {
+        Map[] Users = null;
         try {
-            String query = "SELECT user_pwd FROM db_grad_cs_1917.users WHERE user_id = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString (1, login);
+            String query = "SELECT * FROM db_grad_cs_1917.users WHERE user_id = ?";
+            PreparedStatement preparedStatement = db.prepare(query);
+            preparedStatement.setString (1, UserId);
             preparedStatement.execute();
             ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {
-                if (password.equals(rs.getString("user_pwd"))) {
-                    return true;
-                }
-            } else {
-                System.out.println("User not found");
-            }
-        }
-        catch (Exception e) {
+            Users = db.ResultSetToMapArray (rs);
+        } catch (Exception e) {
             System.err.println ("Got an exception!");
             System.err.println (e.getMessage());
         }
-        return false;
+        return Users;
     }
-
-    private static class ObjectMapper {
-
-        public ObjectMapper() {
+    public Map[] LoadAnonymousUsers (String AnonymousUserId) {
+        Map[] AnonymousUsers = null;
+        try {
+            String query = "SELECT * FROM db_grad_cs_1917.anonymous_users WHERE anonymous_user_id = ?";
+            PreparedStatement preparedStatement = db.prepare(query);
+            preparedStatement.setString (1, AnonymousUserId);
+            preparedStatement.execute();
+            ResultSet rs = preparedStatement.executeQuery();
+            AnonymousUsers = db.ResultSetToMapArray (rs);
+        } catch (Exception e) {
+            System.err.println ("Got an exception!");
+            System.err.println (e.getMessage());
         }
+        return AnonymousUsers;
+    }
+    public Map[] LoadCounterparties (){ //Integer CounterpartyId) {
+        Map[] Counterparties = null;
+        try {
+//            String query = "SELECT * FROM db_grad_cs_1917.counterparty WHERE counterparty_id = ?";
+            String query = "SELECT * FROM db_grad_cs_1917.counterparty";
+            PreparedStatement preparedStatement = db.prepare(query);
+          //  preparedStatement.setInt (1, CounterpartyId); /// Integer or Int
+            preparedStatement.execute();
+            ResultSet rs = preparedStatement.executeQuery();
+            Counterparties = db.ResultSetToMapArray (rs);
+        } catch (Exception e) {
+            System.err.println ("Got an exception!");
+            System.err.println (e.getMessage());
+        }
+        return Counterparties;
+    }
+    public boolean AuthorizeUser (String login, String password) {
+        
+        return false;
     }
 }
