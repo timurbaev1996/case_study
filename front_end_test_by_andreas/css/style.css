@@ -1,0 +1,48 @@
+html *
+{
+   font-family: Arial, "Times New Roman";
+   font-size: 16px;
+   font-weight: 150;
+}
+
+body{
+    background-color:  #F0F8FF;
+    padding:0px ;
+    margin:0px; /* margin: -16px; gemogelt; soll den header komplett weiss fuellen*/
+	/*background-color: linear-gradient(to bottom, blue, white)*/
+}
+header{
+width: 100%;
+height: auto;
+top: -10px;
+margin: 0px;
+/*padding: 50px;*/
+background-color: white;
+
+}
+.wrapper_main{
+	top: 400px;
+	width: 960px;
+	margin: 0 auto;
+	height: 1000px;
+	background-color: white;
+}
+.wrapper_head{
+	width: 960px;
+	margin: 0 auto;
+	height: 110px;
+	background-color: white;
+}
+
+#profile-img{
+	width: 110px;
+	height: 110px;
+}
+#login{
+	width: 480px;
+	height: 200px;
+	margin: 0 auto;
+	border-radius: 15px;
+	padding: 5px;
+	background-color: #F0F8FF;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Investment App Login</title>
+
+</head>
+
+<body>
+
+	<header>
+		<div class="wrapper_head">
+		<p>Deutsche Bank Konzern <img id="profile-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Deutsche_Bank_logo_without_wordmark.svg/225px-Deutsche_Bank_logo_without_wordmark.svg.png" align="right"/></p>
+		
+		 <nav>Girokonto Investments Vorsorge Immobilien</nav>
+		</div>
+	</header>
+
+	</div>
+
+	<div class="wrapper_main">
+
+		<div style="width: 480px; margin: 0 auto;height: 22px">
+			<h1> LOGIN </h1>
+		</div>
+
+		<div id="login"> 
+			<form name="login">
+            	Username<input type="text" name="userid"/> <br>
+            	Password<input type="password" name="pswrd"/><br>
+            	<input type="button" onclick="check(this.form)" value="Login"/>
+            	<input type="reset" value="Cancel"/>
+        	</form>
+			
+
+      		<span class="psw">Forgot <a href="#">password?</a></span>
+      		
+      		
+      		<a href="pages/welcomePage.html"> aaaa </a>
+        
+
+
+		</div>
+	</div>
+
+</body>
+
+<script language="javascript">
+
+function check(form) 
+{
+
+   if(form.userid.value == "aaaa" && form.pswrd.value == "aaaa") {
+   				
+                    window.open("pages/welcomePage.html")/*opens the target page while Id & password matches*/
+                }
+                else {
+                    alert("Error Password or Username")/*displays error message*/
+                }
+
+}
+   	
+   
+
+</script>
+
+
+
+</html>
