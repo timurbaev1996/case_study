@@ -6,7 +6,9 @@
 package com.deutsche.dba.web;
 
 
+import com.db.demomidtier.SQLManager;
 import com.deutsche.dba.utils.SimpleJsonMessage;
+import java.util.Map;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -22,15 +24,15 @@ import javax.ws.rs.core.Response;
  * @author Selvyn
  */
 @Path("/services")
-public class DBDAServicePort implements IDBDAServicePort
-{
+public class DBDAServicePort implements IDBDAServicePort {
    
+    public SQLManager sqlManager = null;//new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
 
     @Override
     @GET
     @Path("/sayhello")
     public Response sayHtmlHelloTest()
-    {
+    {  
         String result = "<html> " + "<title>" + "DBDA" + "</title>"
                 + "<body><h1>" + "the dbda is running..." + "</h1></body>" + "</html> ";
 
@@ -40,11 +42,25 @@ public class DBDAServicePort implements IDBDAServicePort
     @Override
     @GET
     @Path("/getAllTags")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Response getAllTags()
+    //@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    public Response testConnection()      
     {
-        String result = "getAllTags() need to be built";
-    	return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build();
+        String result = "";
+        if (sqlManager == null) {
+            try {
+                sqlManager = new SQLManager("jdbc:mysql://ocalhost:3307/db_grad","root","ppp");
+            } catch (Exception e) {
+                System.err.println (e.getMessage());
+                return Response.status(200).entity(e.getMessage()).build();
+            }
+        }
+
+        String output = sqlManager.testConnection();
+        result = "<html> " + "<title>" + "DBDA" + "</title>" 
+        + "<body><h1>" + output + "</h1></body>" + "</html> ";
+        return Response.status(200).entity(result).build();
+
+               
     }
     
     @Override
@@ -75,8 +91,6 @@ public class DBDAServicePort implements IDBDAServicePort
     {
         String result = "loginWithInfo() need to be built";
     	return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build();
-    }
-
     
-
+    }
 }
