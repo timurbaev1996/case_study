@@ -29,8 +29,8 @@ public interface IDBDAServicePort
     public Response sayHtmlHelloTest();
     
     @GET
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Response getAllTags();
+     @Produces(MediaType.TEXT_HTML)
+    public Response testConnection();
     
     @GET
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })

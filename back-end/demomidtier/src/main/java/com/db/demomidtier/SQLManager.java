@@ -7,12 +7,20 @@ public class SQLManager {
     private DB db;
     public SQLManager (String dbName, String username, String password) {
         try {
-            db = new DB(dbName, username, password);
+            db = new DB(dbName, username, password);     
         } catch (Exception e) {
             throw new IllegalStateException("Cannot connect the database!", e); /// wrong
         }
     }
-    public Map[] LoadUsers (String UserId) {
+    
+    public String testConnection () {
+        if (db == null) {
+            return "Failed to make connection!";
+        } else {
+            return "Successful";
+        }
+    }
+   public Map[] LoadUsers (String UserId) {
         Map[] Users = null;
         try {
             String query = "SELECT * FROM db_grad_cs_1917.users WHERE user_id = ?";
@@ -61,5 +69,5 @@ public class SQLManager {
     public boolean AuthorizeUser (String login, String password) {
         
         return false;
-    }
+    } 
 }
