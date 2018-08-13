@@ -1,12 +1,17 @@
-html *
-{
+html * {
    font-family: Arial, "Times New Roman";
    font-size: 16px;
    font-weight: 150;
+	margin: 0;
+	//padding: 0;
+	//border: 0;
+	vertical-align: baseline;
 }
 
 body{
-    background-color:  #F0F8FF;
+	background: red;
+	background: linear-gradient(white, #d9cfc7);
+   // background-color:  #d9cfc7 ;//#F0F8FF Deutsche Bank grau
     padding:0px ;
     margin:0px; /* margin: -16px; gemogelt; soll den header komplett weiss fuellen*/
 	/*background-color: linear-gradient(to bottom, blue, white)*/
@@ -17,8 +22,7 @@ height: auto;
 top: -10px;
 margin: 0px;
 /*padding: 50px;*/
-background-color: white;
-
+background-color:  #d9cfc7; //#777777;
 }
 .wrapper_main{
 	top: 400px;
@@ -31,12 +35,12 @@ background-color: white;
 	width: 960px;
 	margin: 0 auto;
 	height: 110px;
-	background-color: white;
+	background-color: #d9cfc7; //#777777;
 }
 
 #profile-img{
-	width: 110px;
-	height: 110px;
+	width: 80px;
+	height: 80px;
 }
 #login{
 	width: 480px;
@@ -44,5 +48,39 @@ background-color: white;
 	margin: 0 auto;
 	border-radius: 15px;
 	padding: 5px;
+	background-color: #d9cfc7;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
 	background-color: #F0F8FF;
+}
+
+li {
+	float: left;
+	}
+
+li a {
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	font-weight: bold;
+	text-decoration: none;
+}
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+	background-color: #888888;
+}
+.active {
+	background-color: #0088FF	;
+	font-weight: bold;
+}
+#grad1 {
+	height: 200px;
+	background: red; /* For browsers that do not support gradients */
+	background: linear-gradient(red, yellow); /* Standard syntax (must be last) */
 }
