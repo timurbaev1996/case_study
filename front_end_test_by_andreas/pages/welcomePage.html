@@ -4,20 +4,52 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<title>Welcome Page</title>
 
 </head>
 
 <body>
 
-	<header>
-		<div class="wrapper_head">
-		<p>Deutsche Bank Konzern <img id="profile-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Deutsche_Bank_logo_without_wordmark.svg/225px-Deutsche_Bank_logo_without_wordmark.svg.png" align="right"/></p>
-		
-		 <nav>Girokonto Investments Vorsorge Immobilien</nav>
+<header>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#"> <img style="width: 50px; height: 50px;" src="../img/Deutsche_Bank_logo_without_wordmark.svg" align="left"/></a>
+		<a class="navbar-brand" href="#">  Navbar</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="#">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Girokonto</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Vorsorge</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Investment App <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Immobilien</a>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
 		</div>
-	</header>
+	</nav>
+
+</header>
 
 	</div>
 
@@ -26,6 +58,63 @@
 		<p>Welcome to the Welcome-Page. Here you find several information about financial activities of your customers. Feel free to use it.</p>
 	</div>
 
+
+
+	<div class="container">
+		<h2>Filterable Table</h2>
+		<p>Type something in the input field to search the table for first names, last names or emails:</p>
+		<input class="form-control" id="myInput" type="text" placeholder="Search..">
+		<br>
+		<table class="table table-bordered table-striped">
+			<thead>
+			<tr>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Email</th>
+			</tr>
+			</thead>
+			<tbody id="myTable">
+			<tr>
+				<td>John</td>
+				<td>Doe</td>
+				<td>john@example.com</td>
+			</tr>
+			<tr>
+				<td>Mary</td>
+				<td>Moe</td>
+				<td>mary@mail.com</td>
+			</tr>
+			<tr>
+				<td>July</td>
+				<td>Dooley</td>
+				<td>july@greatstuff.com</td>
+			</tr>
+			<tr>
+				<td>Anja</td>
+				<td>Ravendale</td>
+				<td>a_r@test.com</td>
+			</tr>
+			</tbody>
+		</table>
+
+		<p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
+	</div>
+
+
 </body>
+
+
+
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
 
 </html>
