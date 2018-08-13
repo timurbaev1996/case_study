@@ -82,30 +82,27 @@ public class SQLManager {
         return Counterparties;
     }
     public boolean AuthorizeUser (String UserId, String UserPwd) throws Exception {
-    
-        //throw new Exception("FASFFASFSAFASGGGGGGGGGGGGGGGGGGGGGGGGGGG");
-        try {
-            String query = "SELECT * FROM users WHERE user_id = ? AND user_pwd = ?";
-            PreparedStatement preparedStatement = db.prepare(query);
-            preparedStatement.setString (1, UserId);
-            preparedStatement.setString (2, UserPwd);
-            preparedStatement.execute();
-            ResultSet rs = preparedStatement.executeQuery();
-            Map[] Users = db.ResultSetToMapArray (rs);
-            switch (Users.length) {
-                case 0:
-                    throw new Exception("Auth Error");
-                case 1:
-                    return true; // Better Map
-                    //Auth Success
-                    //break;
-                default:
-                    throw new Exception("Database Error"); // Not unique key
-            }
-        } catch (Exception e) {
-            System.err.println ("Got an exception!");
-            System.err.println (e.getMessage());
+        String query = "SELECT * FROM users WHERE user_id = ? AND user_pwd = ?";
+        PreparedStatement preparedStatement = db.prepare(query);
+        preparedStatement.setString (1, UserId);
+        preparedStatement.setString (2, UserPwd);
+        preparedStatement.execute();
+        ResultSet rs = preparedStatement.executeQuery();
+        Map[] Users = db.ResultSetToMapArray (rs);
+        switch (Users.length) {
+            case 0:
+                throw new Exception("Auth Error");
+            case 1:
+                String serialized = "Hello";
+                // ...
+                cookie.GenerateCookie(serialized);
+                // ...
+                // cookie.decryptCookie(s);
+                return true; // Better Map
+                //Auth Success
+                //break;
+            default:
+                throw new Exception("Database Error"); // Not unique key
         }
-        throw new Exception("[ggydfg");
     }
 }
