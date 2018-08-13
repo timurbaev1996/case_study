@@ -13,9 +13,16 @@
 
 	<header>
 		<div class="wrapper_head">
-		<p>Deutsche Bank Konzern <img id="profile-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Deutsche_Bank_logo_without_wordmark.svg/225px-Deutsche_Bank_logo_without_wordmark.svg.png" align="right"/></p>
-		
-		 <nav>Girokonto Investments Vorsorge Immobilien</nav>
+		<p style="font-weight: bold"> Deutsche Bank Konzern <img id="profile-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Deutsche_Bank_logo_without_wordmark.svg/225px-Deutsche_Bank_logo_without_wordmark.svg.png" align="right"/></p>
+			<ul>
+				<li><a href="">Girokonto</a></li>
+				<li><a href="">Investments</a></li>
+				<li><a href="">Vorsorge</a></li>
+				<li><a class="active", href="">Investment App</a></li>
+				<li><a href="">Immobilien</a></li>
+				<li style="float:right"><a href="#about">About</a></li>
+			</ul>
+		 <nav>   </nav>
 		</div>
 	</header>
 
@@ -52,7 +59,6 @@
 
 function check(form) 
 {
-
    if(form.userid.value == "aaaa" && form.pswrd.value == "aaaa") {
    				
                     window.open("pages/welcomePage.html")/*opens the target page while Id & password matches*/
@@ -60,7 +66,6 @@ function check(form)
                 else {
                     alert("Error Password or Username")/*displays error message*/
                 }
-
 }
    	
    
