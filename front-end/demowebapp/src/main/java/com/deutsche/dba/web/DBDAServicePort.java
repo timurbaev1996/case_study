@@ -26,7 +26,7 @@ import javax.ws.rs.core.Response;
 @Path("/services")
 public class DBDAServicePort implements IDBDAServicePort {
    
-    public SQLManager sqlManager = null;//new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
+    public SQLManager sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
 
     @Override
     @GET
@@ -41,14 +41,14 @@ public class DBDAServicePort implements IDBDAServicePort {
     
     @Override
     @GET
-    @Path("/getAllTags")
+    @Path("/testConnection")
     //@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response testConnection()      
     {
         String result = "";
         if (sqlManager == null) {
             try {
-                sqlManager = new SQLManager("jdbc:mysql://ocalhost:3307/db_grad","root","ppp");
+                sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
             } catch (Exception e) {
                 System.err.println (e.getMessage());
                 return Response.status(200).entity(e.getMessage()).build();
@@ -59,20 +59,28 @@ public class DBDAServicePort implements IDBDAServicePort {
         result = "<html> " + "<title>" + "DBDA" + "</title>" 
         + "<body><h1>" + output + "</h1></body>" + "</html> ";
         return Response.status(200).entity(result).build();
-
-               
+        
     }
-    
     @Override
     @GET
-    @Path("/getAllURL")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Response getAllURL()
+    @Path("/validate")
+    public Response validate()
     {
-        String result = "getAllURL() need to be built";
-    	return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build();
+        try {
+            //boolean output = true;
+            boolean output = sqlManager.AuthorizeUser("alson", "gradprog2016@07");
+            String result = "<html> " + "<title>" + "DBDA" + "</title>" 
+        + "<body><h1>" + output + "</h1></body>" + "</html> ";
+        return Response.status(200).entity(result).build();
+        } catch (Exception e) {
+            return Response.status(200).entity("Unsuccessful Login").build();
+        }
+        
     }
 
+    
+    
+       
     @Override
     @GET
     @Path("/get/{tags}")

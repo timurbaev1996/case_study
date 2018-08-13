@@ -13,6 +13,13 @@ public class SQLManager {
         }
     }
 
+    public String testConnection () {
+        if (db == null) {
+            return "Failed to make connection!";
+        } else {
+            return "Successful";
+            
+        }}
     public Map LoadUserById (String UserId) throws Exception {
         Map[] Users;
         try {
@@ -75,6 +82,8 @@ public class SQLManager {
         return Counterparties;
     }
     public boolean AuthorizeUser (String UserId, String UserPwd) throws Exception {
+    
+        //throw new Exception("FASFFASFSAFASGGGGGGGGGGGGGGGGGGGGGGGGGGG");
         try {
             String query = "SELECT * FROM users WHERE user_id = ? AND user_pwd = ?";
             PreparedStatement preparedStatement = db.prepare(query);
@@ -97,6 +106,6 @@ public class SQLManager {
             System.err.println ("Got an exception!");
             System.err.println (e.getMessage());
         }
-        throw new Exception("");
+        throw new Exception("[ggydfg");
     }
 }
