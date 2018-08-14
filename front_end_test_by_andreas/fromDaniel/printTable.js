@@ -12,7 +12,11 @@ $(document).ready(function(){
    success:function(data)
    {
     var employee_data = data.split(/\r?\n|\r/);
-    var table_data = '<table class="table table-bordered table-striped">';
+    var table_data = '<table data-toggle="table" class="table table-bordered table-striped" data-sort-name="stargazers_count" data-sort-order="desc">';
+    // <table data-toggle="table"
+    //    data-url="https://api.github.com/users/wenzhixin/repos?type=owner&sort=full_name&direction=asc&per_page=100&page=1"
+    //    data-sort-name="stargazers_count"
+    //    data-sort-order="desc">
     for(var count = 0; count<employee_data.length; count++)
     {
      var cell_data = employee_data[count].split(",");
@@ -21,7 +25,8 @@ $(document).ready(function(){
      {
       if(count === 0)
       {
-       table_data += '<th>'+cell_data[cell_count]+'</th>';
+       table_data += '<th data-sortable="true">'+cell_data[cell_count]+'</th>';
+       console.log(cell_data[cell_count]);
       }
       else
       {
