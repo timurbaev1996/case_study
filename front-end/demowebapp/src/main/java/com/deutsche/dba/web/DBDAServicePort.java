@@ -26,7 +26,7 @@ import javax.ws.rs.core.Response;
 @Path("/services")
 public class DBDAServicePort implements IDBDAServicePort {
    
-    public SQLManager sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
+    public SQLManager sqlManager;// = new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
 
     @Override
     @GET
@@ -43,12 +43,12 @@ public class DBDAServicePort implements IDBDAServicePort {
     @GET
     @Path("/testConnection")
     //@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Response testConnection()      
+    public Response testConnection2()      
     {
         String result = "";
         if (sqlManager == null) {
             try {
-                sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
+                sqlManager = new SQLManager("dbc:mysql://localhost:3307/db_grad","root","ppp");
             } catch (Exception e) {
                 System.err.println (e.getMessage());
                 return Response.status(200).entity(e.getMessage()).build();
@@ -56,9 +56,14 @@ public class DBDAServicePort implements IDBDAServicePort {
         }
 
         String output = sqlManager.testConnection();
-        result = "<html> " + "<title>" + "DBDA" + "</title>" 
-        + "<body><h1>" + output + "</h1></body>" + "</html> ";
-        return Response.status(200).entity(result).build();
+        boolean out;
+        if (output == "Successful"){
+            out = true;     
+        }
+        else{
+            out = false;
+        }
+        return Response.status(200).entity(out).build();
         
     }
     @Override
@@ -68,12 +73,11 @@ public class DBDAServicePort implements IDBDAServicePort {
     {
         try {
             //boolean output = true;
-            boolean output = sqlManager.AuthorizeUser("alson", "gradprog2016@07");
-            String result = "<html> " + "<title>" + "DBDA" + "</title>" 
-        + "<body><h1>" + output + "</h1></body>" + "</html> ";
-        return Response.status(200).entity(result).build();
+            boolean output = sqlManager.AuthorizeUser("alison", "gradprog2016@07");
+            
+        return Response.status(200).entity(output).build();
         } catch (Exception e) {
-            return Response.status(200).entity("Unsuccessful Login").build();
+            return Response.status(200).entity(false).build();
         }
         
     }

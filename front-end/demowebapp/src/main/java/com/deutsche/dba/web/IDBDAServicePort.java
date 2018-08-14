@@ -30,11 +30,11 @@ public interface IDBDAServicePort
     
     @GET
      @Produces(MediaType.TEXT_HTML)
-    public Response testConnection();
+    public Response testConnection2();
     
     @GET
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Response getAllURL();
+    public Response validate();
     
     @GET
     @Path("/get/{tags}")

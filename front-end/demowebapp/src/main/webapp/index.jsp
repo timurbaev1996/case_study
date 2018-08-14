@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="globalHelper" class="deutschebank.core.ApplicationScopeHelper" scope="application"/>
+<%--<jsp:useBean id="globalHelper" class="com.deutsche.dba.web" scope="application"/>--%>
 
 <!doctype html>
 <html ng-app="DBApp">
@@ -20,6 +20,8 @@
 
     <script src="scripts/button.js"></script>
     <script src="scripts/card.js"></script>
+    <script src="scripts/main.js"></script>
+    
 
     <!-- App controller -->
     <script src="js/route/route.js"></script>
@@ -56,27 +58,16 @@
 
       <div class="text-center" style="padding:50px 0">
 
-       <%
-              String  dbStatus = "DB NOT CONNECTED";
+       
 
-              globalHelper.setInfo("Set any value here for application level access");
-              boolean connectionStatus = globalHelper.bootstrapDBConnection();
-
-              if( connectionStatus )
-              {
-                  dbStatus = "You have successfully connected to the server";
-              }
-       %>
-
-       <h2>
-
-       <%= dbStatus %></h2>
-          <%
-              if( connectionStatus )
-              {
-          %>
-
-
+              <div class="container">
+                    <button type="button" onClick="testConnection()" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+                        <div id="connectiontext"> Test Connection </div>
+                    </button>
+              </div>
+          
+          
+          <p><br>
           <div style="padding-bottom:50px; color:#CACACA; font-family: Verdana;" class="logo"><h4><b>Login</b></h4></div>
         <!-- Main Form -->
           <img id="profile-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Deutsche_Bank_logo_without_wordmark.svg/225px-Deutsche_Bank_logo_without_wordmark.svg.png" />
@@ -97,7 +88,7 @@
               </div>
 
               <div class="container">
-                    <button type="button" id="loading-example-btn" onClick="validateUserID()" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+                    <button type="button" id="loading-example-btn" onClick="testConnection()" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
                         Submit
                     </button>
               </div>
@@ -105,13 +96,12 @@
           </form>
         </div>
 
-        <%
-            }
-        %>
 
       </div>
     </div>
 
-  </body>
+  </body>  
+  
+
 
 </html>

@@ -1,4 +1,2 @@
 com\deutsche\dba\utils\SimpleJsonMessage.class
-com\deutsche\dba\web\IDBDAServicePort.class
-com\deutsche\dba\web\DBDAServicePort.class
 com\deutsche\dba\utils\Message.class

@@ -9,7 +9,8 @@ public class SQLManager {
         try {
             db = new DB(dbName, username, password);
         } catch (Exception e) {
-            throw new IllegalStateException("Cannot connect the database!", e); /// wrong
+            db = null;
+            //throw new IllegalStateException("Cannot connect the database!", e); /// wrong
         }
     }
 
@@ -95,7 +96,7 @@ public class SQLManager {
             case 1:
                 String serialized = "Hello";
                 // ...
-                cookie.GenerateCookie(serialized);
+                //cookie.GenerateCookie(serialized);
                 // ...
                 // cookie.decryptCookie(s);
                 return true; // Better Map
