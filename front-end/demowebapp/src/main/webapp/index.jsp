@@ -69,8 +69,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.jsp">Home</a></li>
-                        <li><a href="data.jsp">Data</a></li>
-                        <li><a href="about.html">Team</a></li>
+                        <li><a href="data.jsp">Team</a></li>
 
                     </ul>
                 </div>

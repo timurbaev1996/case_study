@@ -40,7 +40,7 @@ function validat() {
 
                         if (result === "true") {
                             // TODO: Destroy, display table
-                            alert("Successful login");
+                            //alert("Successful login");
                             destroy();
                             displayTable();
                             

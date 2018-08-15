@@ -45,7 +45,6 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="index.jsp">Home</a></li>
-                        <li class="active"><a href="data.jsp">Data</a></li>
                         <li><a href="data.jsp">Team</a></li>
 
                     </ul>
@@ -55,7 +54,7 @@
 
       <div class="text-center" style="padding:50px 0">
 
-        <h1> put data here </h1>
+        <h1> Tim, Mike, Hannah, Dan, Andreas, Florian</h1>
 
 
 
