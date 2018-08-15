@@ -60,13 +60,19 @@ function destroy() {
     }
 }
 function displayTable(){
+	$.ajax({
+		method: 'GET',
+		url: rootURL+'/displayTable',
+               
+		dataType: "json", // data type of response
+		success : function(result) {   
+                    console.log(result);
     
-    $.getJSON('dealsData.json', function (data) {
-            //console.log(data);
+        
 
             // Retrieve column headers
             var columnHeaders;
-            columnHeaders = $.map(data[0], function (val, key) { return key })
+            columnHeaders = $.map(result[0], function (val, key) { return key })
             console.log(columnHeaders);
 
             // Start writing html table code
@@ -80,10 +86,10 @@ function displayTable(){
             tableBody += '</tr> </thead>';
 
             // Print table values
-            for (row = 0; row < data.length; row++) {
+            for (row = 0; row < result.length; row++) {
                 tableBody += '<tr>';
                 for (column in columnHeaders) {
-                    tableBody += '<td>' + data[row][columnHeaders[column]] + '</td>';
+                    tableBody += '<td>' + result[row][columnHeaders[column]] + '</td>';
                 }
                 tableBody += '</tr>';
             }
@@ -91,5 +97,5 @@ function displayTable(){
             tableBody += '</tbody> </table>';
             $('#dataBaseTable').html(tableBody);
 
-        });
-}
+                }})}
+
