@@ -1,7 +1,4 @@
-
-
 var rootURL = "rws/services";
-
 
 function testConnection() {
 	console.log('testConnection');
