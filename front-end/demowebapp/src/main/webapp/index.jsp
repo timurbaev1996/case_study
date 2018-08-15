@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
   </head>
+  <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="dbanalyzer/css/main.css" />
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+        </script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous">
+        
+    </head>
 
   <body>
     <!-- Import scripts -->
@@ -88,7 +104,7 @@
               </div>
 
               <div class="container">
-                    <button type="button" id="loading-example-btn" onClick="testConnection()" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+                    <button type="button" id="loading-example-btn" onClick="validat()" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
                         Submit
                     </button>
               </div>

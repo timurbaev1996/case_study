@@ -43,12 +43,11 @@ public class DBDAServicePort implements IDBDAServicePort {
     @GET
     @Path("/testConnection")
     //@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Response testConnection2()      
+    public Response testConnection()      
     {
-        String result = "";
         if (sqlManager == null) {
             try {
-                sqlManager = new SQLManager("dbc:mysql://localhost:3307/db_grad","root","ppp");
+                sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
             } catch (Exception e) {
                 System.err.println (e.getMessage());
                 return Response.status(200).entity(e.getMessage()).build();
@@ -66,14 +65,33 @@ public class DBDAServicePort implements IDBDAServicePort {
         return Response.status(200).entity(out).build();
         
     }
-    @Override
+    
     @GET
-    @Path("/validate")
-    public Response validate()
+    @Path("/validate/{name}/{pwd}")
+    public Response validate(@PathParam("name")String name,
+                                        @PathParam("pwd")String pwd)
     {
         try {
             //boolean output = true;
-            boolean output = sqlManager.AuthorizeUser("alison", "gradprog2016@07");
+            sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
+            boolean output = sqlManager.AuthorizeUser(name,pwd);
+            
+        return Response.status(200).entity(output).build();
+        } catch (Exception e) {
+            return Response.status(200).entity(false).build();
+        }
+        
+    }
+    
+    @POST
+    @Path("/validate1")
+    public Response validateFromForm(@FormParam("lg_username")String name,
+                                        @FormParam("lg_password")String pwd)
+    {
+        try {
+            //boolean output = true;
+            sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
+            boolean output = sqlManager.AuthorizeUser(name,pwd);
             
         return Response.status(200).entity(output).build();
         } catch (Exception e) {

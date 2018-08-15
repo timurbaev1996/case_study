@@ -29,12 +29,14 @@ public interface IDBDAServicePort
     public Response sayHtmlHelloTest();
     
     @GET
-     @Produces(MediaType.TEXT_HTML)
-    public Response testConnection2();
+    @Produces(MediaType.TEXT_HTML)
+    public Response testConnection();
     
-    @GET
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Response validate();
+    @POST
+    @Path("validate/{name}/{pwd}")
+    //@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    public Response validate(@PathParam("name")String name,
+                                        @PathParam("pwd")String pwd);
     
     @GET
     @Path("/get/{tags}")

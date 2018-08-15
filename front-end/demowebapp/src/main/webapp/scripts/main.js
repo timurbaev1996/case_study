@@ -1,9 +1,5 @@
 var rootURL = "rws/services";
 
-function validateUserId()
-{
-    loginFromForm();
-}
 
 function testConnection() {
 	console.log('testConnection');
@@ -23,14 +19,30 @@ function testConnection() {
 //                            alert("Unsuccessful  connection");
                             document.querySelector('#connectiontext').innerText = "Unsuccessful connection";
                             document.querySelector('#connectiontext').setEnabled = "false";
-
-
                         }
-			
-			}
+		}
 	});
   
+}
+
+
+function validat() {
+        var name = $('form');
+        var fdata = name.serialize();
+	$.ajax({
+		method: 'POST',
+		url: rootURL+'/validate1',
+                data: fdata,
+		dataType: "text", // data type of response
+		success : function(result) {
+
+                        if (result === "true") {
+                            alert("Successful login");
+                            
+                        } else {
+                            alert("Unsuccessful login");
+                        }
+		}
+	});
      
-       
-        
 }
