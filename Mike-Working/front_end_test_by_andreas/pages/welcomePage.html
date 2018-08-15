@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+	<!--<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">       // href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+	<!--<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+
+	<title>Welcome Page</title>
+
+</head>
+
+<body>
+
+<header>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#"> <img style="width: 50px; height: 50px;" src="../img/Deutsche_Bank_logo_without_wordmark.svg" align="left"/></a>
+		<a class="navbar-brand" href="#">  Navbar</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="#">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Girokonto</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Vorsorge</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Investment App <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Immobilien</a>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
+
+</header>
+
+	</div>
+
+	<div class="container">
+
+		<div class="dropdown">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+				Credential Details
+			</button>
+
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="#">Username: aaaa</a>
+				<a class="dropdown-item" href="#">Passwort: aaaa</a>
+				<a class="dropdown-item" href="#">E-Mail: aaaa.aaaa@hotmail.com</a>
+				<a class="dropdown-item" href="#">Phone: +49 157 874 665 21</a>
+			</div>
+		</div>
+
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+			Credential Details
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">User Information</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<a class="dropdown-item" href="#">Username: aaaa</a>
+						<a class="dropdown-item" href="#">Passwort: aaaa</a>
+						<a class="dropdown-item" href="#">E-Mail: aaaa.aaaa@hotmail.com</a>
+						<a class="dropdown-item" href="#">Phone: +49 157 874 665 21</a>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<div class="wrapper_main" style="margin-top:10px, ">
+			<p><b>Welcome to Investment App.</b> <br> The purpose of this App is the easier and efficient display of your previous trading data. Further down you will find a table which gives you an overview over all past trades. To get a better insights please use the filter function.</p>
+		</div>
+
+
+
+
+
+		<h2 style="margin-top:100px" >Filterable Table <button type="button" class="btn btn-primary" style="float:right;" onclick="location.href = 'test_12.html'";>Diagrams</h2>
+		<p>Type something in the input field to search the table for first names, last names or emails:</p>
+		<input class="form-control" id="myInput" type="text" placeholder="Search..">
+		<br>
+		<table class="table table-bordered table-striped">
+			<thead>
+			<tr>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Email</th>
+			</tr>
+			</thead>
+			<tbody id="myTable">
+			<tr>
+				<td>John</td>
+				<td>Doe</td>
+				<td>john@example.com</td>
+			</tr>
+			<tr>
+				<td>Mary</td>
+				<td>Moe</td>
+				<td>mary@mail.com</td>
+			</tr>
+			<tr>
+				<td>July</td>
+				<td>Dooley</td>
+				<td>july@greatstuff.com</td>
+			</tr>
+			<tr>
+				<td>Anja</td>
+				<td>Ravendale</td>
+				<td>a_r@test.com</td>
+			</tr>
+			</tbody>
+		</table>
+
+		<p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
+	</div>
+
+
+
+
+
+<!--<script>window.jQuery || document.write('<script src="../js/jquery-3.1.1.min.js"><\/script>')</script>-->
+
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
+
+
+</body>
+
+
+
+
+
+</html>
