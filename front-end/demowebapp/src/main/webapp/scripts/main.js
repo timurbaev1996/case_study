@@ -96,6 +96,11 @@ function displayTable(){
 
             tableBody += '</tbody> </table>';
             $('#dataBaseTable').html(tableBody);
+            
+            $(document).ready(function () {
+            $('#dataTable').DataTable();
+
+        });
 
                 }})}
 

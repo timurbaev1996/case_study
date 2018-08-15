@@ -110,7 +110,7 @@ public class DBDAServicePort implements IDBDAServicePort {
         Map[] result;
         try {
             sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
-            result = sqlManager.correlationCounterparty();
+            result = sqlManager.correlationInstrument();
             return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build(); 
             
         } catch (SQLException ex) {

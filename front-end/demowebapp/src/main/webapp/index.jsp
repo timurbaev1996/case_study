@@ -7,23 +7,20 @@
     <!-- CSS file -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+
   </head>
   <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <link rel="stylesheet" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-            
-     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
         <link rel="stylesheet"
               href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
               integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
               crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="dbanalyzer/css/main.css" />
-        <script
-            src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+
         </script>
         <script
             src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -32,15 +29,13 @@
         
     </head>
     
-    
-
   <body>
     <!-- Import scripts -->
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script src="scripts/button.js"></script>
@@ -81,7 +76,8 @@
                 </div>
             </div>
         </nav>
-          <div id="dataBaseTable"></div>;
+        <br><br>
+        <div id="dataBaseTable"></div>;
     <div id="content">
 
       <div class="text-center" style="padding:50px 0">
