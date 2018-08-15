@@ -39,6 +39,28 @@ public class SQLManager {
         }
         throw new Exception("");
     }
+    
+        public Map[] overview () throws SQLException {
+        String query = "SELECT d.deal_time, d.deal_type, d.deal_amount, d.deal_quantity, i.instrument_name, c.counterparty_name, c.counterparty_status, c.counterparty_date_registered FROM deal d, counterparty c, instrument i where d.deal_instrument_id = i.instrument_id and d.deal_counterparty_id = c.counterparty_id order by d.deal_id";
+        PreparedStatement preparedStatement = db.prepare(query);
+        preparedStatement.execute();
+        ResultSet rs = preparedStatement.executeQuery();
+        return db.ResultSetToMapArray (rs);
+    }
+    public Map[] correlationCounterparty () throws SQLException {
+        String query = "SELECT sum(d.deal_quantity), sum(d.deal_amount), c.counterparty_name FROM deal d, counterparty c WHERE d.deal_counterparty_id = c.counterparty_id group by c.counterparty_name;";
+	PreparedStatement preparedStatement = db.prepare(query);
+        preparedStatement.execute();
+        ResultSet rs = preparedStatement.executeQuery();
+        return db.ResultSetToMapArray (rs);
+    }
+    public Map[] correlationInstrument () throws SQLException {
+        String query = "SELECT sum(d.deal_quantity), sum(d.deal_amount), i.instrument_name FROM deal d, instrument i WHERE d.deal_instrument_id = i.instrument_id group by i.instrument_name;";
+        PreparedStatement preparedStatement = db.prepare(query);
+        preparedStatement.execute();
+        ResultSet rs = preparedStatement.executeQuery();
+        return db.ResultSetToMapArray (rs);
+    }
     public Map[] LoadUsers () {
         Map[] Users = null;
         try {

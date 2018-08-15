@@ -1,2 +1,5 @@
 com\deutsche\dba\utils\SimpleJsonMessage.class
+com\deutsche\dba\web\IDBDAServicePort.class
+.netbeans_automatic_build
+com\deutsche\dba\web\DBDAServicePort.class
 com\deutsche\dba\utils\Message.class

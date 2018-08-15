@@ -8,6 +8,31 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
   </head>
+  <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <link rel="stylesheet" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+            
+     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="dbanalyzer/css/main.css" />
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+        </script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous">
+        
+    </head>
+    
+    
 
   <body>
     <!-- Import scripts -->
@@ -21,6 +46,7 @@
     <script src="scripts/button.js"></script>
     <script src="scripts/card.js"></script>
     <script src="scripts/main.js"></script>
+    
     
 
     <!-- App controller -->
@@ -55,6 +81,8 @@
                 </div>
             </div>
         </nav>
+          <div id="dataBaseTable"></div>;
+    <div id="content">
 
       <div class="text-center" style="padding:50px 0">
 
@@ -88,17 +116,18 @@
               </div>
 
               <div class="container">
-                    <button type="button" id="loading-example-btn" onClick="testConnection()" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+                    <button type="button" id="loading-example-btn" onClick="validat()" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
                         Submit
                     </button>
               </div>
             </div>
           </form>
         </div>
-
+       </div>
 
       </div>
     </div>
+
 
   </body>  
   

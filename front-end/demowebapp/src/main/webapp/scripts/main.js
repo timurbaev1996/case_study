@@ -1,3 +1,5 @@
+
+
 var rootURL = "rws/services";
 
 
@@ -37,7 +39,10 @@ function validat() {
 		success : function(result) {
 
                         if (result === "true") {
+                            // TODO: Destroy, display table
                             alert("Successful login");
+                            destroy();
+                            displayTable();
                             
                         } else {
                             alert("Unsuccessful login");
@@ -45,4 +50,46 @@ function validat() {
 		}
 	});
      
+}
+
+function destroy() {
+
+    var content = document.getElementById("content");
+    while (content.firstChild) {
+        content.removeChild(content.firstChild);
+    }
+}
+function displayTable(){
+    
+    $.getJSON('dealsData.json', function (data) {
+            //console.log(data);
+
+            // Retrieve column headers
+            var columnHeaders;
+            columnHeaders = $.map(data[0], function (val, key) { return key })
+            console.log(columnHeaders);
+
+            // Start writing html table code
+            var tableBody = '<table id="dataTable" class="row-border hover order-column" style="width:100%">';
+            tableBody += '<thead> <tr>';
+
+            // Print column headers
+            for (cH in columnHeaders) {
+                tableBody += '<th>' + columnHeaders[cH] + '</th>';
+            }
+            tableBody += '</tr> </thead>';
+
+            // Print table values
+            for (row = 0; row < data.length; row++) {
+                tableBody += '<tr>';
+                for (column in columnHeaders) {
+                    tableBody += '<td>' + data[row][columnHeaders[column]] + '</td>';
+                }
+                tableBody += '</tr>';
+            }
+
+            tableBody += '</tbody> </table>';
+            $('#dataBaseTable').html(tableBody);
+
+        });
 }

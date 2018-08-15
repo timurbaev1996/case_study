@@ -8,7 +8,10 @@ package com.deutsche.dba.web;
 
 import com.db.demomidtier.SQLManager;
 import com.deutsche.dba.utils.SimpleJsonMessage;
+import java.sql.SQLException;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -26,7 +29,7 @@ import javax.ws.rs.core.Response;
 @Path("/services")
 public class DBDAServicePort implements IDBDAServicePort {
    
-    public SQLManager sqlManager;// = new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
+    public SQLManager sqlManager;
 
     @Override
     @GET
@@ -47,7 +50,7 @@ public class DBDAServicePort implements IDBDAServicePort {
     {
         if (sqlManager == null) {
             try {
-                sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
+                sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
             } catch (Exception e) {
                 System.err.println (e.getMessage());
                 return Response.status(200).entity(e.getMessage()).build();
@@ -73,7 +76,7 @@ public class DBDAServicePort implements IDBDAServicePort {
     {
         try {
             //boolean output = true;
-            sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
+            sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
             boolean output = sqlManager.AuthorizeUser(name,pwd);
             
         return Response.status(200).entity(output).build();
@@ -90,7 +93,7 @@ public class DBDAServicePort implements IDBDAServicePort {
     {
         try {
             //boolean output = true;
-            sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad","root","ppp");
+            sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
             boolean output = sqlManager.AuthorizeUser(name,pwd);
             
         return Response.status(200).entity(output).build();
@@ -100,9 +103,25 @@ public class DBDAServicePort implements IDBDAServicePort {
         
     }
 
+    @GET
+    @Path("/displayTable")
+    public Response displayTable(){
+        
+        Map[] result;
+        try {
+            sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
+            result = sqlManager.correlationCounterparty();
+            return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build(); 
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBDAServicePort.class.getName()).log(Level.SEVERE, null, ex);
+            return Response.ok(ex.getMessage(), MediaType.APPLICATION_JSON_TYPE).build(); 
+        }
+        
+        
+    }
     
     
-       
     @Override
     @GET
     @Path("/get/{tags}")

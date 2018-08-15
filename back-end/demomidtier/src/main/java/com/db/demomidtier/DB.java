@@ -71,6 +71,12 @@ public class DB {
                         case "DATETIME":
                             Obj.put(key, rs.getDate(key));
                             break;
+                        case "DECIMAL":
+                            Obj.put(key, rs.getBigDecimal(key));
+                            break;
+                        case "VARCHAR":
+                            Obj.put(key, rs.getString(key));
+                            break;
                         default:
                             System.out.println("not supported yet");
                     }
