@@ -10,8 +10,11 @@ import com.db.demomidtier.SQLManager;
 import com.deutsche.dba.utils.SimpleJsonMessage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.Map;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.FormParam;
@@ -22,6 +25,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import static jdk.nashorn.tools.ShellFunctions.input;
 
 
 /**
@@ -30,8 +34,8 @@ import javax.ws.rs.core.Response;
  */
 @Path("/services")
 public class DBDAServicePort implements IDBDAServicePort {
-   
-    public SQLManager sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
+    
+    public SQLManager sqlManager = new SQLManager("jdbc:mysql://10.11.32.21:3306/db_grad_cs_1917","dbgrad","dbgrad");
 
     @Override
     @GET
