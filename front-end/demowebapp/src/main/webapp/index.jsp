@@ -77,6 +77,8 @@
         </nav>
         <br><br>
         <div id="dataBaseTable"></div>;
+    
+        
     <div id="content">
 
       <div class="text-center" style="padding:50px 0">

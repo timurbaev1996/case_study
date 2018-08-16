@@ -56,6 +56,9 @@ function destroy() {
         content.removeChild(content.firstChild);
     }
 }
+
+
+
 function displayTable(){
 	$.ajax({
 		method: 'GET',

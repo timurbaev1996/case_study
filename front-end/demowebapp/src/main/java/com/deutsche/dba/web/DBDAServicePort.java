@@ -8,6 +8,8 @@ package com.deutsche.dba.web;
 
 import com.db.demomidtier.SQLManager;
 import com.deutsche.dba.utils.SimpleJsonMessage;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.logging.Level;
@@ -29,7 +31,7 @@ import javax.ws.rs.core.Response;
 @Path("/services")
 public class DBDAServicePort implements IDBDAServicePort {
    
-    public SQLManager sqlManager;
+    public SQLManager sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
 
     @Override
     @GET
@@ -50,7 +52,7 @@ public class DBDAServicePort implements IDBDAServicePort {
     {
         if (sqlManager == null) {
             try {
-                sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
+                //sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
             } catch (Exception e) {
                 System.err.println (e.getMessage());
                 return Response.status(200).entity(e.getMessage()).build();
@@ -76,7 +78,7 @@ public class DBDAServicePort implements IDBDAServicePort {
     {
         try {
             //boolean output = true;
-            sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
+            //sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
             boolean output = sqlManager.AuthorizeUser(name,pwd);
             
         return Response.status(200).entity(output).build();
@@ -93,7 +95,7 @@ public class DBDAServicePort implements IDBDAServicePort {
     {
         try {
             //boolean output = true;
-            sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
+            //sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
             boolean output = sqlManager.AuthorizeUser(name,pwd);
             
         return Response.status(200).entity(output).build();
@@ -105,13 +107,20 @@ public class DBDAServicePort implements IDBDAServicePort {
 
     @GET
     @Path("/displayTable")
-    public Response displayTable(){
+    public Response displayTable() throws JsonProcessingException{
         
         Map[] result;
         try {
-            sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
-            result = sqlManager.correlationInstrument();
-            return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build(); 
+            //sqlManager = new SQLManager("jdbc:mysql://localhost:3307/db_grad_cs_1917","root","ppp");
+            result = sqlManager.overview();
+            
+            ObjectMapper mapperObj = new ObjectMapper();
+       
+            String jsonResp = mapperObj.writeValueAsString(result);
+            System.out.println(jsonResp);
+
+            return Response.ok(jsonResp, MediaType.APPLICATION_JSON_TYPE).build(); 
+
             
         } catch (SQLException ex) {
             Logger.getLogger(DBDAServicePort.class.getName()).log(Level.SEVERE, null, ex);
@@ -122,24 +131,4 @@ public class DBDAServicePort implements IDBDAServicePort {
     }
     
     
-    @Override
-    @GET
-    @Path("/get/{tags}")
-    public Response getSavedURLWithInfo(@PathParam("tags")String tags)
-    {
-        String result = "getSavedURLWithInfo() need to be built";
-    	return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build();
-    }
-
-    @Override
-    @GET
-    @Path("/login/{usr}/{pwd}")
-    public Response loginWithInfo( @PathParam("url")String usr,
-                                        @PathParam("description")String description,
-                                        @PathParam("tags")String tags )
-    {
-        String result = "loginWithInfo() need to be built";
-    	return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build();
-    
-    }
 }
